@@ -1,4 +1,4 @@
-/outputs/
-/manuscript/
+Outputs/
+Manuscript/
 *.Rhistory
 /.Rproj.user/
