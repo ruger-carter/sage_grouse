@@ -1,45 +1,11 @@
----
-title: "ReproDataSci"
-author: "Ruger Carter"
-date: "2023-03-01"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = 'C:/Users/ruger/Box Sync/PhD/Coursework/Repro_Data_Science')
-```
-
-### Database Diagram
-
-This is a diagram of my data. Primary keys are italicized. Foreign keys are 
-bolded. 
-
-![](C:/Users/ruger/Box Sync/PhD/Coursework/Repro_Data_Science/RDS_Final_Project/_bookdown_files/_main_files/figure-html/database_design.png)
-
-### Creating the database
-This is the code I used to create the database. We'll start with loading the
-`DBI` and ``RSQLite` Packages.
-
-```{r pkg, eval = TRUE}
+# Load Packages ####
 library(DBI)
 library(RSQLite)
-```
 
-First, we're going to start by establishing a connection to a SQLite database. 
-
-```{r connection, eval = TRUE}
+#Create new sage_grouse database
 sg_db <- dbConnect(RSQLite::SQLite(), "sg.db")
-```
 
-### Creating the sage-grouse plot data
-
-This table includes all plot data that we sampled using 
-pointing dogs and pellet counts.
-
-```{r sg_fire_plots_table, eval =FALSE, echo = TRUE}
-
-#create plot table
+#create sg_fire_plots table
 dbExecute(sg_db, "CREATE TABLE sg_fire_plots (
           global_id,
           plot_id varchar(5) NOT NULL,
@@ -51,26 +17,16 @@ dbExecute(sg_db, "CREATE TABLE sg_fire_plots (
           surveyor,
           PRIMARY KEY (plot_id)
           );")
-
+#bring in csv of plot data
 sg_fire_plots <- read.csv("Data/raw_data/sg_fire_plots.csv")
 names(sg_fire_plots)
 
 #Enter data from CSV into table
 dbWriteTable(sg_db, "sg_fire_plots", sg_fire_plots, append = TRUE)
 
-```
-
-This is what the content of the table looks like:
-
-```{r show-sg_fire_plots}
 #check data
 dbGetQuery(sg_db, "SELECT * FROM sg_fire_plots LIMIT 10;")
-```
 
-### Pellet Count Data
-
-This table includes all the pellet count data collected on the plots.
-```{r pellet_count_raw_table, eval =FALSE, echo = TRUE}
 #Create table for pellet count data
 dbExecute(sg_db, "CREATE TABLE pellet_count_raw (
           obs_id PRIMARY KEY NOT NULL,
@@ -88,20 +44,8 @@ pellet_count_raw <- read.csv("Data/raw_data/pellet_raw.csv")
 
 dbWriteTable (sg_db, "pellet_count_raw", pellet_count_raw, append = TRUE)
 
-```
+dbGetQuery (sg_db, "SELECT * FROM pellet_count_raw LIMIT 15;")
 
-This is what the the contents of the table looks like
-
-```{r show-pellet_count_raw}
-#check data
-dbGetQuery (sg_db, "SELECT * FROM pellet_count_raw LIMIT 10;")
-```
-
-### Dog Plot Data
-This is the code where I created the dog plot table and inserted the data into
-the table.
-
-```{r dog_transect_raw_table , eval =FALSE, echo = TRUE}
 #Bring in dog data
 dbExecute(sg_db, "CREATE TABLE dog_transect_raw (
           obs_id PRIMARY KEY,
@@ -118,25 +62,8 @@ dog_raw <- read.csv("data/raw_data/dog_raw.csv")
 
 dbWriteTable(sg_db, "dog_transect_raw", dog_raw, append = TRUE)
 
-```
-
-This is what the data looks like.
-
-```{r show-dog_transect_raw}
-
-#check data
 dbGetQuery (sg_db, "SELECT * FROM dog_transect_raw LIMIT 10;")
 
-```
-
-### Combining data
-Because I am using nested data entry methods using Survey123, the data comes to
-me in two separate data sheets. One sheet contains the information about the 
-plot, the other sheet is all the pellet count observations. It links the two 
-through a "global_id". I need to combine the two sheets to where each pellet 
-observation also has the plot information. I am combining those below. 
-
-```{r pellet_count_table , eval =FALSE, echo = TRUE}
 #Combine pellet counts with plot data
 dbExecute(sg_db, "CREATE TABLE pellet_count (
   observation INTEGER PRIMARY KEY,
@@ -174,24 +101,9 @@ global_id, plot_id, type, elevation, fire_year,pellet_type, pellet_age,
     WHERE sg_fire_plots.global_id = pellet_count_raw.global_id
     ;")
 
-```
-
-This is what the final data sheet looks like. 
-
-```{r show-pellet_count}
-
-#check data
-
 dbGetQuery (sg_db, "SELECT * FROM pellet_count LIMIT 10;")
 
-```
-
-### Combining data
-
-The same steps need to be done with my pointing dog transect data.
-
-```{r dog_transect_table , eval =FALSE, echo = TRUE}
-#Combine pointing dog data with plot data.
+#Combine plot data with dog data 
 dbExecute(sg_db, "CREATE TABLE dog_transect (
   observation INTEGER PRIMARY KEY,
   plot_id varchar(5),
@@ -225,15 +137,12 @@ gray_part, distance)
     FROM sg_fire_plots LEFT JOIN dog_transect_raw USING (plot_id)
     WHERE sg_fire_plots.plot_id = dog_transect_raw.plot_id
     ;")
-```
-
-This is what the final data sheet looks like. 
-
-```{r show-dog_transect}
-
-#check data
 
 dbGetQuery (sg_db, "SELECT * FROM dog_transect LIMIT 10;")
 
-
-```
+#delete
+dbExecute (sg_db, "DROP TABLE IF EXISTS dog_transect")
+dbExecute (sg_db, "DROP TABLE IF EXISTS pellet_count")
+dbExecute (sg_db, "DROP TABLE IF EXISTS pellet_count_raw")
+dbExecute (sg_db, "DROP TABLE IF EXISTS dog_transect_raw")
+dbExecute (sg_db, "DROP TABLE IF EXISTS sg_fire_plots")
