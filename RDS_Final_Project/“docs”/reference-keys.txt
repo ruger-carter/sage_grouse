@@ -1,0 +1,8 @@
+creating-the-sage-grouse-fire-database
+database-diagram
+creating-the-database
+creating-the-sage-grouse-fire-plot-data
+pellet-count-data
+dog-plot-data
+combining-pellet-count-data-with-plot-data
+combining-dog-transect-data-with-plot-data.

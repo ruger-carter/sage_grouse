@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Greater Sage-grouse and Wildfire</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Greater Sage-grouse and Wildfire" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Greater Sage-grouse and Wildfire" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Ruger Carter" />
+
+
+<meta name="date" content="2023-04-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="#creating-the-sage-grouse-fire-database"><i class="fa fa-check"></i><b>1</b> Creating the Sage-grouse Fire Database</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="#database-diagram"><i class="fa fa-check"></i><b>1.1</b> Database Diagram</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="#creating-the-database"><i class="fa fa-check"></i><b>1.2</b> Creating the database</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="#creating-the-sage-grouse-fire-plot-data"><i class="fa fa-check"></i><b>1.3</b> Creating the sage-grouse fire plot data</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="#pellet-count-data"><i class="fa fa-check"></i><b>1.4</b> Pellet Count Data</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="#dog-plot-data"><i class="fa fa-check"></i><b>1.5</b> Dog Plot Data</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="#combining-pellet-count-data-with-plot-data"><i class="fa fa-check"></i><b>1.6</b> Combining pellet count data with plot data</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="#combining-dog-transect-data-with-plot-data."><i class="fa fa-check"></i><b>1.7</b> Combining dog transect data with plot data.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Greater Sage-grouse and Wildfire</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Greater Sage-grouse and Wildfire</h1>
+<p class="author"><em>Ruger Carter</em></p>
+<p class="date"><em>2023-04-20</em></p>
+</div>
+<div id="creating-the-sage-grouse-fire-database" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Creating the Sage-grouse Fire Database<a href="#creating-the-sage-grouse-fire-database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="database-diagram" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Database Diagram<a href="#database-diagram" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is a diagram of my data. Primary keys are italicized. Foreign keys are
+shown in bold. sg_fire_plots table contains the data for individual plots. The
+pellet_count_raw table includes data recorded during pellet count surveys. The
+dog_transect_raw table includes data recorded during pointing dog surveys.</p>
+</div>
+<div id="creating-the-database" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Creating the database<a href="#creating-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the code I used to create the database. We’ll start with loading the
+<code>DBI</code> and `<code>RSQLite</code> Packages.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code></pre></div>
+<p>First, we’re going to start by establishing a connection to a SQLite database.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sg_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;sg.db&quot;</span>)</span></code></pre></div>
+</div>
+<div id="creating-the-sage-grouse-fire-plot-data" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Creating the sage-grouse fire plot data<a href="#creating-the-sage-grouse-fire-plot-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This table includes all plot data that we sampled using pointing dogs and pellet
+counts.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create sg_fire_plot table</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;CREATE TABLE sg_fire_plots (</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">          global_id,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">          plot_id varchar(5) NOT NULL,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">          state varchar(2) CHECK (state IN (&#39;Idaho&#39;, &#39;Utah&#39;)),</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">          date,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">          type char (1) CHECK (type IN (&#39;B&#39;,&#39;C&#39;)),</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">          elevation char (4),</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">          fire_year char (4),</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">          surveyor,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">          PRIMARY KEY (plot_id)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">          );&quot;</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>sg_fire_plots <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/raw_data/sg_fire_plots.csv&quot;</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sg_fire_plots)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Enter data from CSV into table</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(sg_db, <span class="st">&quot;sg_fire_plots&quot;</span>, sg_fire_plots, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>This is what the content of the table looks like:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(sg_db, <span class="st">&quot;SELECT * FROM sg_fire_plots LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##                               global_id plot_id state            date type
+## 1  f8c4c2e7-0943-4cea-a943-90f858db695a    IDB1 Idaho  9/6/2022 15:49    B
+## 2  9161b0ae-60b1-44e1-af24-52ae23a6ad3a    IDC1 Idaho  9/7/2022 16:56    C
+## 3  7b0bc762-0d47-403f-8b90-359ba21a6b51    IDB2 Idaho  9/6/2022 14:56    B
+## 4  54cb649e-5254-4ec4-9858-5817a66b5af5    IDC2 Idaho  9/7/2022 16:56    C
+## 5  08359285-da58-402c-8c83-6cad69cdb2c3    IDB3 Idaho  9/6/2022 14:58    B
+## 6  78e4bf48-5004-44c4-ac85-a687f62decbc    IDC3 Idaho  9/7/2022 16:55    C
+## 7  1ecb8c44-3e56-4434-bac1-f42f33f6c9e2    IDB4 Idaho 9/21/2022 19:19    B
+## 8  5cc1a76e-4c04-4a00-a3c6-b9b88bf69120    IDB5 Idaho 9/21/2022 19:19    B
+## 9  5f52bc01-463b-4b1e-814d-e12c3362c911    IDB6 Idaho 9/21/2022 19:19    B
+## 10 4b02d159-ae20-4bc8-9e82-21bb905ec574    IDB7 Idaho 10/5/2022 21:08    B
+##    elevation fire_year        surveyor
+## 1       6200      2010 Austin Heitzman
+## 2       6200      &lt;NA&gt; Austin Heitzman
+## 3       5900      1999 Austin Heitzman
+## 4       5900      &lt;NA&gt; Austin Heitzman
+## 5       6000      1999 Austin Heitzman
+## 6       6000      &lt;NA&gt; Austin Heitzman
+## 7       5700      1999 Austin Heitzman
+## 8       6200      1999 Austin Heitzman
+## 9       5600      1999 Austin Heitzman
+## 10      6300      1981 Austin Heitzman</code></pre>
+</div>
+<div id="pellet-count-data" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Pellet Count Data<a href="#pellet-count-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This table includes all the pellet count data collected on the plots.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create table for pellet count data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;CREATE TABLE pellet_count_raw (</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">          obs_id PRIMARY KEY NOT NULL,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">          global_id,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">          pellet_type varchar (15),</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">          pellet_age varchar (8),</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">          pellet_dist varchar (5),</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">          dist_to_edge varchar (5),</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">          transect_dist varchar (5),</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">          hab_type varchar (20)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">          );&quot;</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Bring in pellets data</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>pellet_count_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/raw_data/pellet_raw.csv&quot;</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span> (sg_db, <span class="st">&quot;pellet_count_raw&quot;</span>, pellet_count_raw, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>This is what the the contents of the table looks like</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span> (sg_db, <span class="st">&quot;SELECT * FROM pellet_count_raw LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    obs_id                            global_id    pellet_type pellet_age
+## 1       1 2eb62165-bf94-47b2-a63a-af0776b4f48f Pellet Cluster        Old
+## 2       2 2eb62165-bf94-47b2-a63a-af0776b4f48f Pellet Cluster        Old
+## 3       3 ff0ed995-d726-43d9-b314-b4e4e07329b1 Pellet Cluster   Moderate
+## 4       4 ff0ed995-d726-43d9-b314-b4e4e07329b1 Pellet Cluster   Moderate
+## 5       5 ff0ed995-d726-43d9-b314-b4e4e07329b1 Pellet Cluster        Old
+## 6       6 ff0ed995-d726-43d9-b314-b4e4e07329b1 Pellet Cluster   Moderate
+## 7       7 ff0ed995-d726-43d9-b314-b4e4e07329b1 Pellet Cluster   Very Old
+## 8       8 ff0ed995-d726-43d9-b314-b4e4e07329b1  Single Pellet        Old
+## 9       9 ff0ed995-d726-43d9-b314-b4e4e07329b1  Single Pellet   Moderate
+## 10     10 9c68a1ac-1c8b-4bb0-aba4-dfbe45da26c4                          
+##    pellet_dist dist_to_edge transect_dist        hab_type
+## 1        143.5         55.0         385.0   Low Sagebrush
+## 2        133.0        195.0         439.0   Low Sagebrush
+## 3        302.0         10.0          84.0 Perennial Grass
+## 4         75.0         38.0         112.0     Bare Ground
+## 5         35.0         37.0         123.0     Bare Ground
+## 6         87.0         47.0         148.0     Bare Ground
+## 7         99.0         52.0         163.0 Perennial Grass
+## 8         72.0         25.0         206.0     Bare Ground
+## 9         84.0         48.0         425.0   Low Sagebrush
+## 10        &lt;NA&gt;         &lt;NA&gt;          &lt;NA&gt;</code></pre>
+</div>
+<div id="dog-plot-data" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Dog Plot Data<a href="#dog-plot-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the code where I created the dog plot table and inserted the data into
+the table.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Bring in dog data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;CREATE TABLE dog_transect_raw (</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">          obs_id PRIMARY KEY,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">          plot_id varchar (5),</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">          hens varchar (2),</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">          chicks varchar (2),</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">          males varchar (2),</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">          chukar varchar (2),</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">          gray_part varchar (2),</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">          distance varchar(5)</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">          );&quot;</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>dog_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/raw_data/dog_raw.csv&quot;</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(sg_db, <span class="st">&quot;dog_transect_raw&quot;</span>, dog_raw, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>This is what the data looks like.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span> (sg_db, <span class="st">&quot;SELECT * FROM dog_transect_raw LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    obs_id plot_id hens chicks males chukar gray_part distance
+## 1       1    UTC1 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 2       2    UTB1 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;         1     50.0
+## 3       3    UTC2 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 4       4    UTB2 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 5       5    UTC3    1      3  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 6       6    UTB3 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 7       7    UTC4 &lt;NA&gt;   &lt;NA&gt;     9   &lt;NA&gt;      &lt;NA&gt;     92.0
+## 8       8    UTB4 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 9       9    UTC5 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;
+## 10     10    UTB5 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;      &lt;NA&gt;     &lt;NA&gt;</code></pre>
+</div>
+<div id="combining-pellet-count-data-with-plot-data" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Combining pellet count data with plot data<a href="#combining-pellet-count-data-with-plot-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Because I am using nested data entry methods using Survey123, the data comes to
+me in two separate data sheets. One sheet contains the information about the
+plot, the other sheet is all the pellet count observations. It links the two
+through a “global_id”. I need to combine the two sheets to where each pellet
+observation also has the plot information. I am combining those below.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combine pellet counts with plot data</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;CREATE TABLE pellet_count (</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">  observation INTEGER PRIMARY KEY,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">  global_id,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">  plot_id varchar(5),</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">  type char(1),</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">  elevation char (4),</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">  fire_year char(4),</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">  pellet_type,</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">  pellet_age,</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">  pellet_dist,</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">  dist_to_edge,</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">  transect_dist,</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="st">  hab_type,</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="st">  FOREIGN KEY (global_id) REFERENCES sg_fire_plots(global_id)</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="st">  FOREIGN KEY (global_id) REFERENCES pellet_count_raw(global_id)</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="st">  );&quot;</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;INSERT INTO pellet_count (</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="st">global_id, plot_id, type, elevation, fire_year,pellet_type, pellet_age, </span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="st">  pellet_dist,dist_to_edge, transect_dist, hab_type)</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.global_id,</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.plot_id,</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.type,</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.elevation,</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.fire_year,</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="st">    pellet_count_raw.pellet_type,</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="st">    pellet_count_raw.pellet_age,</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="st">    pellet_count_raw.pellet_dist,</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="st">    pellet_count_raw.dist_to_edge,</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="st">    pellet_count_raw.transect_dist,</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="st">    pellet_count_raw.hab_type</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM sg_fire_plots LEFT JOIN pellet_count_raw USING (global_id)</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE sg_fire_plots.global_id = pellet_count_raw.global_id</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="st">    ;&quot;</span>)</span></code></pre></div>
+<p>This is what the final data sheet looks like.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span> (sg_db, <span class="st">&quot;SELECT * FROM pellet_count LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    observation                            global_id plot_id type elevation
+## 1            1 4b02d159-ae20-4bc8-9e82-21bb905ec574    IDB7    B      6300
+## 2            2 4b02d159-ae20-4bc8-9e82-21bb905ec574    IDB7    B      6300
+## 3            3 4b02d159-ae20-4bc8-9e82-21bb905ec574    IDB7    B      6300
+## 4            4 abeaa1a3-19c8-41a3-a784-127d99357ca3    IDB8    B      6720
+## 5            5 abeaa1a3-19c8-41a3-a784-127d99357ca3    IDB8    B      6720
+## 6            6 5d833d59-8706-4889-b490-b4b120edc76e    IDC8    C      6520
+## 7            7 5d833d59-8706-4889-b490-b4b120edc76e    IDC8    C      6520
+## 8            8 5d833d59-8706-4889-b490-b4b120edc76e    IDC8    C      6520
+## 9            9 5d833d59-8706-4889-b490-b4b120edc76e    IDC8    C      6520
+## 10          10 5d833d59-8706-4889-b490-b4b120edc76e    IDC8    C      6520
+##    fire_year    pellet_type pellet_age pellet_dist dist_to_edge transect_dist
+## 1       1981 Pellet Cluster   Very Old       112.0         79.0         250.0
+## 2       1981 Pellet Cluster   Very Old       117.0         60.0         326.0
+## 3       1981 Pellet Cluster   Very Old        83.0         75.0         261.0
+## 4       2012 Pellet Cluster        Old        54.0        676.0         174.0
+## 5       2012 Pellet Cluster        Old        67.0        675.0         142.0
+## 6       &lt;NA&gt; Pellet Cluster   Moderate       123.0        153.0         397.0
+## 7       &lt;NA&gt; Pellet Cluster   Very Old       144.0        158.0         395.0
+## 8       &lt;NA&gt; Pellet Cluster   Very Old       288.0        234.0         328.0
+## 9       &lt;NA&gt;  Single Pellet   Very Old       128.0        232.0         333.0
+## 10      &lt;NA&gt;  Single Pellet   Very Old       163.0         37.0         497.0
+##           hab_type
+## 1    Low Sagebrush
+## 2    Low Sagebrush
+## 3    Low Sagebrush
+## 4  Perennial Grass
+## 5  Perennial Grass
+## 6    Low Sagebrush
+## 7    Low Sagebrush
+## 8    Low Sagebrush
+## 9    Low Sagebrush
+## 10   Low Sagebrush</code></pre>
+</div>
+<div id="combining-dog-transect-data-with-plot-data." class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Combining dog transect data with plot data.<a href="#combining-dog-transect-data-with-plot-data." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The same steps need to be done with my pointing dog transect data.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combine pointing dog data with plot data.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;CREATE TABLE dog_transect (</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="st">  observation INTEGER PRIMARY KEY,</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">  plot_id varchar(5),</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">  type,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="st">  fire_year,</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="st">  elevation,</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">  hens,</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="st">  chicks,</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="st">  males,</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="st">  chukar,</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="st">  gray_part,</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="st">  distance,</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="st">  FOREIGN KEY (plot_id) REFERENCES sg_fire_plots (plot_id)</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="st">  FOREIGN KEY (plot_id) REFERENCES dog_transect_raw (plot_id)</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="st">  );&quot;</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(sg_db, <span class="st">&quot;INSERT INTO dog_transect (</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="st">plot_id, type, fire_year, elevation, hens, chicks, males, chukar, </span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="st">gray_part, distance)</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.plot_id,</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.type,</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.fire_year,</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="st">    sg_fire_plots.elevation,</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="st">    dog_transect_raw.hens,</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="st">    dog_transect_raw.chicks,</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="st">    dog_transect_raw.males,</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="st">    dog_transect_raw.chukar,</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="st">    dog_transect_raw.gray_part,</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="st">    dog_transect_raw.distance</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM sg_fire_plots LEFT JOIN dog_transect_raw USING (plot_id)</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE sg_fire_plots.plot_id = dog_transect_raw.plot_id</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="st">    ;&quot;</span>)</span></code></pre></div>
+<p>This is what the final data sheet looks like.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span> (sg_db, <span class="st">&quot;SELECT * FROM dog_transect LIMIT 10;&quot;</span>)</span></code></pre></div>
+<pre><code>##    observation plot_id type fire_year elevation hens chicks males chukar
+## 1            1    UTC1    C      &lt;NA&gt;      6200 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 2            2    UTB1    B      1999      6200 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 3            3    UTC2    C      &lt;NA&gt;      6400 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 4            4    UTB2    B      1999      6300 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 5            5    UTC3    C      &lt;NA&gt;      6200    1      3  &lt;NA&gt;     NA
+## 6            6    UTB3    B      1999      6080 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 7            7    UTC4    C      &lt;NA&gt;      6200 &lt;NA&gt;   &lt;NA&gt;     9     NA
+## 8            8    UTB4    B      1999      6200 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 9            9    UTC5    C      &lt;NA&gt;      6600 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+## 10          10    UTB5    B      1999      6200 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;     NA
+##    gray_part distance
+## 1       &lt;NA&gt;     &lt;NA&gt;
+## 2          1     50.0
+## 3       &lt;NA&gt;     &lt;NA&gt;
+## 4       &lt;NA&gt;     &lt;NA&gt;
+## 5       &lt;NA&gt;     &lt;NA&gt;
+## 6       &lt;NA&gt;     &lt;NA&gt;
+## 7       &lt;NA&gt;     92.0
+## 8       &lt;NA&gt;     &lt;NA&gt;
+## 9       &lt;NA&gt;     &lt;NA&gt;
+## 10      &lt;NA&gt;     &lt;NA&gt;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

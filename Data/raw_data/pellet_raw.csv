@@ -1,0 +1,135 @@
+﻿obs_id,global_id,pellet_type,pellet_age,pellet_dist,dist_to_edge,transect_dist,hab_type
+1,2eb62165-bf94-47b2-a63a-af0776b4f48f,Pellet Cluster,Old,143.5,55,385,Low Sagebrush
+2,2eb62165-bf94-47b2-a63a-af0776b4f48f,Pellet Cluster,Old,133,195,439,Low Sagebrush
+3,ff0ed995-d726-43d9-b314-b4e4e07329b1,Pellet Cluster,Moderate,302,10,84,Perennial Grass
+4,ff0ed995-d726-43d9-b314-b4e4e07329b1,Pellet Cluster,Moderate,75,38,112,Bare Ground
+5,ff0ed995-d726-43d9-b314-b4e4e07329b1,Pellet Cluster,Old,35,37,123,Bare Ground
+6,ff0ed995-d726-43d9-b314-b4e4e07329b1,Pellet Cluster,Moderate,87,47,148,Bare Ground
+7,ff0ed995-d726-43d9-b314-b4e4e07329b1,Pellet Cluster,Very Old,99,52,163,Perennial Grass
+8,ff0ed995-d726-43d9-b314-b4e4e07329b1,Single Pellet,Old,72,25,206,Bare Ground
+9,ff0ed995-d726-43d9-b314-b4e4e07329b1,Single Pellet,Moderate,84,48,425,Low Sagebrush
+10,9c68a1ac-1c8b-4bb0-aba4-dfbe45da26c4,,,,,,
+11,d0a82760-3fd8-4fb3-93fa-f6b7c2f6b608,,,,,,
+12,729e4ae1-42f2-4524-a28e-decc69df5654,Cecal Pellet,Old,96.52,180,408,Low Sagebrush
+13,729e4ae1-42f2-4524-a28e-decc69df5654,Pellet Cluster,Old,133,185,414,Low Sagebrush
+14,729e4ae1-42f2-4524-a28e-decc69df5654,Pellet Cluster,Old,5,140,448,Low Sagebrush
+15,729e4ae1-42f2-4524-a28e-decc69df5654,Pellet Cluster,Old,20,140,450,Low Sagebrush
+16,729e4ae1-42f2-4524-a28e-decc69df5654,Pellet Cluster,Old,12,140,451,Low Sagebrush
+17,442c4ad4-2531-48e2-a4cd-760979aa1341,,,,,,
+18,79fc1b1d-5f25-4d09-8a24-5538d973d90c,,,,,,
+19,bd89000b-5dab-4170-946f-2d409750e28a,,,,,,
+20,4a08462d-b85e-42e3-be35-736fe4ed7158,Single Pellet,Moderate,4,7.7,123,
+21,4a08462d-b85e-42e3-be35-736fe4ed7158,Single Pellet,Old,14,44.7,183,
+22,eb1bdea4-ae55-407d-acd2-8f52df0e34da,Single Pellet,Old,4,17.3,24,Wyoming Sagebrush
+23,eb1bdea4-ae55-407d-acd2-8f52df0e34da,Pellet Cluster,Old,28,347.1,64,Wyoming Sagebrush
+24,eb1bdea4-ae55-407d-acd2-8f52df0e34da,Single Pellet,Old,19,209.1,163,Wyoming Sagebrush
+25,eb1bdea4-ae55-407d-acd2-8f52df0e34da,Single Pellet,Moderate,24,209,163,Wyoming Sagebrush
+26,3485b656-8243-493c-932a-35397328294d,,,,,,
+27,219ad254-d176-47ae-bb55-e79b32e5846f,Pellet Cluster,Moderate,15,31.8,80,Bare Ground
+28,219ad254-d176-47ae-bb55-e79b32e5846f,Pellet Cluster,Moderate,13,16.9,24,Bare Ground
+29,219ad254-d176-47ae-bb55-e79b32e5846f,Cecal Pellet,Moderate,106,87.5,44,Bare Ground
+30,219ad254-d176-47ae-bb55-e79b32e5846f,Cecal Pellet,Old,25,17.2,176,Bare Ground
+31,219ad254-d176-47ae-bb55-e79b32e5846f,Cecal Pellet,Very Old,22,12.8,204,Perennial Grass
+32,f6c44516-da26-49c7-827b-23d0d632c9d5,,,,,,
+33,16c61294-05c0-49e8-8927-04c7b49bf5cc,,,,,,
+34,81723c8e-0ae7-4ed1-88a3-6d2993b363e1,,,,,,
+35,4e9d64cb-034a-4585-9540-7bce0332a3d1,Pellet Cluster,Old,12,26.2,138,Wyoming Sagebrush
+36,4e9d64cb-034a-4585-9540-7bce0332a3d1,Pellet Cluster,Old,16,83.7,147.7,Wyoming Sagebrush
+37,f42e9d02-8395-40ab-b81d-b06c9580f1c4,Pellet Cluster,Moderate,197,24.7,6.6,Bare Ground
+38,f42e9d02-8395-40ab-b81d-b06c9580f1c4,Pellet Cluster,Moderate,44,136.9,23.1,Wyoming Sagebrush
+39,f42e9d02-8395-40ab-b81d-b06c9580f1c4,Pellet Cluster,Moderate,60,7.7,162.3,Bare Ground
+40,f42e9d02-8395-40ab-b81d-b06c9580f1c4,Cecal Pellet,Very Old,61,66.1,160.5,Bare Ground
+41,8c531a11-9336-4051-a0d8-210a97981939,,,,,,
+42,ec740c22-0b5d-479a-8a51-4e66e943384e,Pellet Cluster,Moderate,27,71.3,118,Black Sagebrush
+43,ec740c22-0b5d-479a-8a51-4e66e943384e,Pellet Cluster,Moderate,30,338.2,194,Black Sagebrush
+44,b6251d26-a68d-416b-955d-c2121a237f58,Single Pellet,Very Old,3,45.2,41,Black Sagebrush
+45,b6251d26-a68d-416b-955d-c2121a237f58,Single Pellet,Very Old,7,30.4,51,Black Sagebrush
+46,b6251d26-a68d-416b-955d-c2121a237f58,Pellet Cluster,Old,23,40.1,82,Low Sagebrush
+47,b6251d26-a68d-416b-955d-c2121a237f58,Single Pellet,Very Old,33,61.9,120,Low Sagebrush
+48,b6251d26-a68d-416b-955d-c2121a237f58,Single Pellet,Very Old,36,70.2,131,Low Sagebrush
+49,b6251d26-a68d-416b-955d-c2121a237f58,Pellet Cluster,Old,41,46.5,152,Black Sagebrush
+50,b6251d26-a68d-416b-955d-c2121a237f58,Pellet Cluster,Very Old,22,43.1,162,Black Sagebrush
+51,b6251d26-a68d-416b-955d-c2121a237f58,Pellet Cluster,Old,20,134.9,47,Black Sagebrush
+52,b6251d26-a68d-416b-955d-c2121a237f58,Pellet Cluster,Moderate,19,91,47,Black Sagebrush
+53,b6251d26-a68d-416b-955d-c2121a237f58,Pellet Cluster,Moderate,55,143.7,47,Black Sagebrush
+54,b6251d26-a68d-416b-955d-c2121a237f58,Single Pellet,Old,81,76.8,133,Black Sagebrush
+56,d4254715-fa77-4328-b58d-ae2d9313f340,Single Pellet,Old,18,85,390,Low Sagebrush
+57,d4254715-fa77-4328-b58d-ae2d9313f340,Single Pellet,Old,21,18,491,Low Sagebrush
+58,b341e374-3b31-4493-ad21-d5d76bf3c232,Single Pellet,Old,38,82,8,Low Sagebrush
+59,b341e374-3b31-4493-ad21-d5d76bf3c232,Single Pellet,Old,7,80,9,Low Sagebrush
+60,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Old,52,78,16,Low Sagebrush
+61,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Old,3,77,20,Low Sagebrush
+62,b341e374-3b31-4493-ad21-d5d76bf3c232,Single Pellet,Very Old,53,71,24,Low Sagebrush
+63,b341e374-3b31-4493-ad21-d5d76bf3c232,Single Pellet,Old,36,62,42,Low Sagebrush
+64,b341e374-3b31-4493-ad21-d5d76bf3c232,Single Pellet,Very Old,28,66,42,Low Sagebrush
+65,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Old,6,55,49,Low Sagebrush
+66,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Very Old,50,25,90,Low Sagebrush
+67,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Very Old,9,4,144,Low Sagebrush
+68,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Very Old,5,15,235,Low Sagebrush
+69,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Very Old,42,13,236,Low Sagebrush
+70,b341e374-3b31-4493-ad21-d5d76bf3c232,Pellet Cluster,Very Old,32,6,432,Low Sagebrush
+71,79215d5f-0034-4f21-951a-6695d8865c03,Pellet Cluster,Very Old,78,60,252,Low Sagebrush
+72,79215d5f-0034-4f21-951a-6695d8865c03,Pellet Cluster,Very Old,39,62,254,Low Sagebrush
+73,79215d5f-0034-4f21-951a-6695d8865c03,Single Pellet,Very Old,12,65,254,Low Sagebrush
+74,79215d5f-0034-4f21-951a-6695d8865c03,Single Pellet,Very Old,0,70,276,Low Sagebrush
+75,79215d5f-0034-4f21-951a-6695d8865c03,Single Pellet,Very Old,3,40,327,Low Sagebrush
+76,79215d5f-0034-4f21-951a-6695d8865c03,Pellet Cluster,Very Old,19,5,386,Mountain Sagebrush
+77,f25fca98-480b-44c8-a3e3-979037e903ac,Pellet Cluster,Old,257,657,304,Perennial Grass
+78,2d5a1b6f-9454-49b5-951e-0726abcbb0c2,Pellet Cluster,Very Old,86,506,490,Low Sagebrush
+79,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Moderate,243,750,72,Low Sagebrush
+80,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Old,257,750,72,Mountain Sagebrush
+81,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Moderate,112,763,103,Low Sagebrush
+82,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Moderate,145,780,106,Low Sagebrush
+83,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Very Old,153,763,107,Low Sagebrush
+84,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Very Old,144,783,139,Low Sagebrush
+85,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Very Old,54,704,254,Low Sagebrush
+86,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Very Old,112,730,297,Low Sagebrush
+87,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Moderate,199,750,331,Low Sagebrush
+88,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Very Old,293,760,335,Low Sagebrush
+89,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Moderate,182,765,376,Low Sagebrush
+90,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Moderate,23,785,447,Low Sagebrush
+91,4075d725-6a02-44d4-a1ec-e96dcb6ef302,Pellet Cluster,Old,36,790,472,Low Sagebrush
+92,cf18980a-9e33-4d7a-95bc-ddea6600232a,Pellet Cluster,Very Old,344,64,64,Perennial Grass
+93,cf18980a-9e33-4d7a-95bc-ddea6600232a,Pellet Cluster,Very Old,12,40,434,Perennial Grass
+94,cf18980a-9e33-4d7a-95bc-ddea6600232a,Pellet Cluster,Moderate,9,55,443,Perennial Grass
+95,cf18980a-9e33-4d7a-95bc-ddea6600232a,Pellet Cluster,Very Old,15,33,487,Perennial Grass
+96,5d833d59-8706-4889-b490-b4b120edc76e,Single Pellet,Very Old,128,232,333,Low Sagebrush
+97,5d833d59-8706-4889-b490-b4b120edc76e,Pellet Cluster,Very Old,288,234,328,Low Sagebrush
+98,5d833d59-8706-4889-b490-b4b120edc76e,Pellet Cluster,Very Old,144,158,395,Low Sagebrush
+99,5d833d59-8706-4889-b490-b4b120edc76e,Pellet Cluster,Moderate,123,153,397,Low Sagebrush
+100,5d833d59-8706-4889-b490-b4b120edc76e,Single Pellet,Very Old,163,37,497,Low Sagebrush
+101,c5d55aff-847a-4187-9f0a-66a2e9f2f6b9,Pellet Cluster,Moderate,144,16,123,Mountain Sagebrush
+102,c5d55aff-847a-4187-9f0a-66a2e9f2f6b9,Single Pellet,Old,112,138,403,Low Sagebrush
+103,c5d55aff-847a-4187-9f0a-66a2e9f2f6b9,Pellet Cluster,Old,33,74,498,Low Sagebrush
+104,38958dd2-abdc-4762-b273-f07022edcd07,Pellet Cluster,Fresh,121,385,161,Black Sagebrush
+105,38958dd2-abdc-4762-b273-f07022edcd07,Pellet Cluster,Fresh,238,550,500,Black Sagebrush
+106,38958dd2-abdc-4762-b273-f07022edcd07,Cecal Pellet,Fresh,238,550,500,Black Sagebrush
+107,abeaa1a3-19c8-41a3-a784-127d99357ca3,Pellet Cluster,Old,67,675,142,Perennial Grass
+108,abeaa1a3-19c8-41a3-a784-127d99357ca3,Pellet Cluster,Old,54,676,174,Perennial Grass
+109,f46153cd-255c-452f-8973-9777722862f6,Pellet Cluster,Old,95,211,21,Perennial Grass
+110,8586c2fe-dfc7-406d-b8bd-09512db19406,Pellet Cluster,Old,0,160,331,Perennial Grass
+111,8586c2fe-dfc7-406d-b8bd-09512db19406,Pellet Cluster,Very Old,78,116,373,Perennial Grass
+112,c97054e2-e17a-4844-a411-0e1b4b7d9be0,Pellet Cluster,Old,33,9,313,Low Sagebrush
+113,c97054e2-e17a-4844-a411-0e1b4b7d9be0,Pellet Cluster,Old,56,16,338,Black Sagebrush
+114,c97054e2-e17a-4844-a411-0e1b4b7d9be0,Single Pellet,Old,89,116,413,Low Sagebrush
+115,c97054e2-e17a-4844-a411-0e1b4b7d9be0,Pellet Cluster,Very Old,63,161,433,Low Sagebrush
+116,c97054e2-e17a-4844-a411-0e1b4b7d9be0,Pellet Cluster,Very Old,45,172,464,Black Sagebrush
+117,c97054e2-e17a-4844-a411-0e1b4b7d9be0,Pellet Cluster,Old,22,142,500,Black Sagebrush
+118,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,78,60,32,Low Sagebrush
+119,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,34,64,50,Low Sagebrush
+120,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Old,112,51,145,Low Sagebrush
+121,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,76,69,254,Black Sagebrush
+122,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,64,205,290,Black Sagebrush
+123,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,89,350,346,Black Sagebrush
+124,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,53,363,378,Black Sagebrush
+125,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Moderate,113,400,471,Black Sagebrush
+126,21c417a5-53ae-45fe-9245-22812db270b0,Pellet Cluster,Very Old,117,415,488,Black Sagebrush
+127,44f86893-def3-49d4-9fc0-de5d8b2fd447,Pellet Cluster,Fresh,277,550,182,Perennial Grass
+128,44f86893-def3-49d4-9fc0-de5d8b2fd447,Pellet Cluster,Moderate,84,462,250,Perennial Grass
+129,7ff5863d-d16a-45cd-b25f-3a6bba712ca8,Single Pellet,Fresh,117,33,213,Mountain Sagebrush
+130,4b02d159-ae20-4bc8-9e82-21bb905ec574,Pellet Cluster,Very Old,112,79,250,Low Sagebrush
+131,4b02d159-ae20-4bc8-9e82-21bb905ec574,Pellet Cluster,Very Old,83,75,261,Low Sagebrush
+132,4b02d159-ae20-4bc8-9e82-21bb905ec574,Pellet Cluster,Very Old,117,60,326,Low Sagebrush
+133,d4254715-fa77-4328-b58d-ae2d9313f699,,,,,,
+134,b341e374-3b31-4493-ad21-d5d76bf3c958,,,,,,
+135,79215d5f-0034-4f21-951a-6695d8865f05,,,,,,
