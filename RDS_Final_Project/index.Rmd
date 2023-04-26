@@ -19,7 +19,6 @@ github-repo: rstudio/bookdown-demo
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = 'C:/Users/ruger/Box Sync/PhD/Research/sage_grouse')
 ```
 
 ## Database Diagram
@@ -29,6 +28,9 @@ shown in bold. sg_fire_plots table contains the data for individual plots. The
 pellet_count_raw table includes data recorded during pellet count surveys. The 
 dog_transect_raw table includes data recorded during pointing dog surveys. 
 
+```{r image, fig.cap="Database Diagram", fig.align='center', out.width='100%'}
+knitr::include_graphics("database_design.png")
+```
 
 ## Creating the database
 This is the code I used to create the database. We'll start with loading the
@@ -42,7 +44,7 @@ library(RSQLite)
 First, we're going to start by establishing a connection to a SQLite database. 
 
 ```{r connection, eval = TRUE}
-sg_db <- dbConnect(RSQLite::SQLite(), "sg.db")
+sg_db <- dbConnect(RSQLite::SQLite(), "../sg.db")
 ```
 
 ## Creating the sage-grouse fire plot data
@@ -65,7 +67,7 @@ dbExecute(sg_db, "CREATE TABLE sg_fire_plots (
           PRIMARY KEY (plot_id)
           );")
 
-sg_fire_plots <- read.csv("Data/raw_data/sg_fire_plots.csv")
+sg_fire_plots <- read.csv("../Data/raw_data/sg_fire_plots.csv")
 names(sg_fire_plots)
 
 #Enter data from CSV into table
@@ -97,7 +99,7 @@ dbExecute(sg_db, "CREATE TABLE pellet_count_raw (
           );")
 
 #Bring in pellets data
-pellet_count_raw <- read.csv("Data/raw_data/pellet_raw.csv")
+pellet_count_raw <- read.csv("../Data/raw_data/pellet_raw.csv")
 
 dbWriteTable (sg_db, "pellet_count_raw", pellet_count_raw, append = TRUE)
 
@@ -127,7 +129,7 @@ dbExecute(sg_db, "CREATE TABLE dog_transect_raw (
           distance varchar(5)
           );")
 
-dog_raw <- read.csv("data/raw_data/dog_raw.csv")
+dog_raw <- read.csv("../Data/raw_data/dog_raw.csv")
 
 dbWriteTable(sg_db, "dog_transect_raw", dog_raw, append = TRUE)
 

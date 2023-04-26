@@ -1,3 +1,4 @@
+fig:image
 creating-the-sage-grouse-fire-database
 database-diagram
 creating-the-database

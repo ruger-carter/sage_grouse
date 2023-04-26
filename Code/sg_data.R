@@ -1,6 +1,9 @@
 # Load Packages ####
 library(DBI)
 library(RSQLite)
+library(tidyverse)
+library(patchwork)
+library(viridis)
 
 #Create new sage_grouse database
 sg_db <- dbConnect(RSQLite::SQLite(), "sg.db")
@@ -18,7 +21,7 @@ dbExecute(sg_db, "CREATE TABLE sg_fire_plots (
           PRIMARY KEY (plot_id)
           );")
 #bring in csv of plot data
-sg_fire_plots <- read.csv("Data/raw_data/sg_fire_plots.csv")
+sg_fire_plots <- read.csv("../Data/raw_data/sg_fire_plots.csv")
 names(sg_fire_plots)
 
 #Enter data from CSV into table
@@ -40,7 +43,7 @@ dbExecute(sg_db, "CREATE TABLE pellet_count_raw (
           );")
 
 #Bring in pellets data
-pellet_count_raw <- read.csv("Data/raw_data/pellet_raw.csv")
+pellet_count_raw <- read.csv("../Data/raw_data/pellet_raw.csv")
 
 dbWriteTable (sg_db, "pellet_count_raw", pellet_count_raw, append = TRUE)
 
@@ -50,15 +53,12 @@ dbGetQuery (sg_db, "SELECT * FROM pellet_count_raw LIMIT 15;")
 dbExecute(sg_db, "CREATE TABLE dog_transect_raw (
           obs_id PRIMARY KEY,
           plot_id varchar (5),
-          hens varchar (2),
-          chicks varchar (2),
-          males varchar (2),
-          chukar varchar (2),
-          gray_part varchar (2),
-          distance varchar(5)
+          obs varchar (10),
+          n varchar (2),
+          dist varchar (5)
           );")
 
-dog_raw <- read.csv("data/raw_data/dog_raw.csv")
+dog_raw <- read.csv("../Data/raw_data/dog_raw.csv")
 
 dbWriteTable(sg_db, "dog_transect_raw", dog_raw, append = TRUE)
 
@@ -110,39 +110,42 @@ dbExecute(sg_db, "CREATE TABLE dog_transect (
   type,
   fire_year,
   elevation,
-  hens,
-  chicks,
-  males,
-  chukar,
-  gray_part,
-  distance,
+  obs,
+  n,
+  dist,
   FOREIGN KEY (plot_id) REFERENCES sg_fire_plots (plot_id)
   FOREIGN KEY (plot_id) REFERENCES dog_transect_raw (plot_id)
   );")
 
 dbExecute(sg_db, "INSERT INTO dog_transect (
-plot_id, type, fire_year, elevation, hens, chicks, males, chukar, 
-gray_part, distance)
+plot_id, type, fire_year, elevation, obs, n, dist)
     SELECT
     sg_fire_plots.plot_id,
     sg_fire_plots.type,
     sg_fire_plots.fire_year,
     sg_fire_plots.elevation,
-    dog_transect_raw.hens,
-    dog_transect_raw.chicks,
-    dog_transect_raw.males,
-    dog_transect_raw.chukar,
-    dog_transect_raw.gray_part,
-    dog_transect_raw.distance
-    FROM sg_fire_plots LEFT JOIN dog_transect_raw USING (plot_id)
+    dog_transect_raw.obs,
+    dog_transect_raw.n,
+    dog_transect_raw.dist
+    FROM sg_fire_plots RIGHT JOIN dog_transect_raw USING (plot_id)
     WHERE sg_fire_plots.plot_id = dog_transect_raw.plot_id
     ;")
 
-dbGetQuery (sg_db, "SELECT * FROM dog_transect LIMIT 10;")
+dbGetQuery (sg_db, "SELECT * FROM dog_transect;")
+dog_transects <- dbGetQuery(sg_db, "SELECT * FROM dog_transect;")
 
-#delete
-dbExecute (sg_db, "DROP TABLE IF EXISTS dog_transect")
-dbExecute (sg_db, "DROP TABLE IF EXISTS pellet_count")
-dbExecute (sg_db, "DROP TABLE IF EXISTS pellet_count_raw")
-dbExecute (sg_db, "DROP TABLE IF EXISTS dog_transect_raw")
-dbExecute (sg_db, "DROP TABLE IF EXISTS sg_fire_plots")
+# Let's look at bird's detected in burned and unburned plots.
+
+dbListTables(sg_db)
+
+dog_transects %>%
+  group_by(obs, type) %>% 
+  summarize(nsum = sum(n))
+
+
+dbRemoveTable(sg_db, "sg_fire_plots")
+dbRemoveTable(sg_db, "dog_transect_raw")
+dbRemoveTable(sg_db, "pellet_count_raw")
+dbRemoveTable(sg_db, "pellet_count")
+dbRemoveTable(sg_db, "dog_transect")
+dbListTables(sg_db)
