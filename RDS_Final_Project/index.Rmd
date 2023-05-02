@@ -18,7 +18,7 @@ github-repo: rstudio/bookdown-demo
 # Creating the Sage-grouse Fire Database
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 ## Database Diagram
@@ -34,7 +34,7 @@ knitr::include_graphics("database_design.png")
 
 ## Creating the database
 This is the code I used to create the database. We'll start with loading the
-`DBI` and ``RSQLite` Packages.
+`DBI` and `RSQLite` Packages.
 
 ```{r pkg, eval = TRUE}
 library(DBI)
@@ -53,20 +53,18 @@ This table includes all plot data that we sampled using pointing dogs and pellet
 counts.
 
 ```{r sg_fire_plots_table, eval = FALSE, echo = TRUE}
-
-#create sg_fire_plot table
 dbExecute(sg_db, "CREATE TABLE sg_fire_plots (
           global_id,
           plot_id varchar(5) NOT NULL,
           state varchar(2) CHECK (state IN ('Idaho', 'Utah')),
           date,
-          type char (1) CHECK (type IN ('B','C')),
+          type char (1) CHECK (type IN ('B','R')),
           elevation char (4),
           fire_year char (4),
           surveyor,
           PRIMARY KEY (plot_id)
           );")
-
+#bring in csv of plot data
 sg_fire_plots <- read.csv("../Data/raw_data/sg_fire_plots.csv")
 names(sg_fire_plots)
 
@@ -86,6 +84,7 @@ dbGetQuery(sg_db, "SELECT * FROM sg_fire_plots LIMIT 10;")
 
 This table includes all the pellet count data collected on the plots.
 ```{r pellet_count_raw_table, eval =FALSE, echo = TRUE}
+
 #Create table for pellet count data
 dbExecute(sg_db, "CREATE TABLE pellet_count_raw (
           obs_id PRIMARY KEY NOT NULL,
@@ -117,16 +116,14 @@ This is the code where I created the dog plot table and inserted the data into
 the table.
 
 ```{r dog_transect_raw_table , eval =FALSE, echo = TRUE}
+
 #Bring in dog data
 dbExecute(sg_db, "CREATE TABLE dog_transect_raw (
           obs_id PRIMARY KEY,
           plot_id varchar (5),
-          hens varchar (2),
-          chicks varchar (2),
-          males varchar (2),
-          chukar varchar (2),
-          gray_part varchar (2),
-          distance varchar(5)
+          obs varchar (10),
+          n varchar (2),
+          dist varchar (5)
           );")
 
 dog_raw <- read.csv("../Data/raw_data/dog_raw.csv")
@@ -153,7 +150,7 @@ through a "global_id". I need to combine the two sheets to where each pellet
 observation also has the plot information. I am combining those below. 
 
 ```{r pellet_count_table , eval =FALSE, echo = TRUE}
-#Combine pellet counts with plot data
+
 dbExecute(sg_db, "CREATE TABLE pellet_count (
   observation INTEGER PRIMARY KEY,
   global_id,
@@ -190,9 +187,11 @@ global_id, plot_id, type, elevation, fire_year,pellet_type, pellet_age,
     WHERE sg_fire_plots.global_id = pellet_count_raw.global_id
     ;")
 
+dbGetQuery (sg_db, "SELECT * FROM pellet_count LIMIT 10;")
+
 ```
 
-This is what the final data sheet looks like. 
+This is what the final pellet count table looks like. 
 
 ```{r show-pellet_count}
 
@@ -207,40 +206,34 @@ dbGetQuery (sg_db, "SELECT * FROM pellet_count LIMIT 10;")
 The same steps need to be done with my pointing dog transect data.
 
 ```{r dog_transect_table , eval =FALSE, echo = TRUE}
-#Combine pointing dog data with plot data.
+
 dbExecute(sg_db, "CREATE TABLE dog_transect (
   observation INTEGER PRIMARY KEY,
   plot_id varchar(5),
   type,
   fire_year,
   elevation,
-  hens,
-  chicks,
-  males,
-  chukar,
-  gray_part,
-  distance,
+  obs,
+  n,
+  dist,
   FOREIGN KEY (plot_id) REFERENCES sg_fire_plots (plot_id)
   FOREIGN KEY (plot_id) REFERENCES dog_transect_raw (plot_id)
   );")
 
 dbExecute(sg_db, "INSERT INTO dog_transect (
-plot_id, type, fire_year, elevation, hens, chicks, males, chukar, 
-gray_part, distance)
+plot_id, type, fire_year, elevation, obs, n, dist)
     SELECT
     sg_fire_plots.plot_id,
     sg_fire_plots.type,
     sg_fire_plots.fire_year,
     sg_fire_plots.elevation,
-    dog_transect_raw.hens,
-    dog_transect_raw.chicks,
-    dog_transect_raw.males,
-    dog_transect_raw.chukar,
-    dog_transect_raw.gray_part,
-    dog_transect_raw.distance
-    FROM sg_fire_plots LEFT JOIN dog_transect_raw USING (plot_id)
+    dog_transect_raw.obs,
+    dog_transect_raw.n,
+    dog_transect_raw.dist
+    FROM sg_fire_plots RIGHT JOIN dog_transect_raw USING (plot_id)
     WHERE sg_fire_plots.plot_id = dog_transect_raw.plot_id
     ;")
+
 ```
 
 This is what the final data sheet looks like. 
@@ -248,8 +241,235 @@ This is what the final data sheet looks like.
 ```{r show-dog_transect}
 
 #check data
-
 dbGetQuery (sg_db, "SELECT * FROM dog_transect LIMIT 10;")
+
+```
+
+# Data Wrangling and Visualization of Dog Transects
+
+In this chapter, I am going to wrangle and visualize my dog transect data. First
+I need to load the tidyverse, patchwork, and viridis packages for data wrangling and 
+visualization.
+
+```{r load_packages, echo = TRUE, message = FALSE}
+#load packages
+library(tidyverse)
+library(patchwork)
+library(viridis)
+```
+
+Reminder of the tables we made in chapter 1.
+```{r show-tables, echo = FALSE}
+#check data
+dbListTables(sg_db)
+
+```
+
+## Dog Transect Detections
+
+I am going to start by plotting out the number of sage-grouse, chukar, and gray 
+partridge we detected in burned and reference plots.
+
+```{r show-dog_transect_plot,out.width = "100%"}
+dog_transects <- dbGetQuery(sg_db, "SELECT * FROM dog_transect;")
+
+dog_transects %>%
+  mutate(obs = factor(obs, levels = c("Sage-Grouse Chicks",
+                                      "Adult Female Sage-Grouse",
+                                      "Adult Male Sage-grouse",
+                                      "Gray Partridge",
+                                      "Chukar"))) %>% 
+  group_by(obs, type) %>% 
+  mutate(n = as.numeric(n)) %>% 
+  summarize(nsum = sum(n)) %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = type, geom_text(3.00))) +
+  geom_bar(aes(y=nsum, fill = type), stat = "identity") +
+  facet_wrap(~obs, nrow = 1) +
+  labs(x = "", y = "# of Detections", fill = "Plot Type")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(strip.text = element_text(
+    size = 7))+
+  ggtitle("Number of detections in burned and reference plots") 
+  
+
+```
+
+## Detection Distance
+
+This is a plot of distance of the detection from the transect line.
+
+```{r show-dog_transect_dist,out.width = "100%"}
+dog_transects <- dbGetQuery(sg_db, "SELECT * FROM dog_transect;")
+
+dog_transects %>%
+  mutate(dist = as.numeric(dist)) %>% 
+  ggplot(aes(x = dist)) +
+  geom_density() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Distance of Detection from Transect") +
+  labs(x = "Detection Distance (m)")
 
 
 ```
+It looks like our detections peak around 20 m and fall from there.
+
+## Detections by Fire Year
+
+Let's look at detections in burned plots by year burned.
+
+```{r show-dog_transect_year_burned,out.width = "100%"}
+dog_transects <- dbGetQuery(sg_db, "SELECT * FROM dog_transect;")
+
+dog_transects %>%
+  mutate(obs = factor(obs, levels = c("Sage-Grouse Chicks",
+                                      "Adult Female Sage-Grouse",
+                                      "Adult Male Sage-grouse",
+                                      "Gray Partridge",
+                                      "Chukar"))) %>% 
+  group_by(obs, fire_year) %>% 
+  mutate(n = as.numeric(n)) %>% 
+  filter(!is.na(fire_year)) %>%
+  summarize(nsum = sum(n)) %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = fire_year)) +
+  geom_bar(aes(y=nsum, fill = obs), stat = "identity") +
+  facet_wrap(~obs, nrow = 1) +
+  labs(x = "Fire Year", y = "# of Detections", fill = "")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(strip.text = element_text(
+    size = 7))+
+  ggtitle("Number of detections in burned and reference plots") +
+   theme(legend.key.size = unit(.4, 'cm'))
+  
+
+```
+No clear pattern is emerging. 
+
+## Detections of sage-grouse by elevation
+
+Let's visualize sage-grouse detections by elevation.
+```{r show-dog_transect_elevation,out.width = "100%"}
+dog_transects <- dbGetQuery(sg_db, "SELECT * FROM dog_transect;")
+
+dog_transects %>%
+  mutate(obs = factor(obs, levels = c("Sage-Grouse Chicks",
+                                      "Adult Female Sage-Grouse",
+                                      "Adult Male Sage-grouse"))) %>% 
+  filter(!is.na(obs)) %>% 
+  mutate(n = as.numeric(n)) %>%
+  mutate(elevation = as.numeric(elevation)) %>% 
+  mutate(elevation = (elevation/3.281)) %>% 
+  group_by(type, elevation) %>% 
+  summarize(nsum = sum(n)) %>%
+  ggplot(aes(x = elevation)) +
+  geom_bar(aes(y=nsum, fill = type), stat = "identity" ) +
+  facet_wrap(~type)+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Sage-grouse Detections by Elevation") +
+  labs(x = "Elevation (m)", y = "# of detections", fill = "Plot Type")
+
+
+```
+No clear pattern is emerging. 
+
+# Data Wrangling and Visualization of Pellet Transects 
+
+This chapter looks at wrangling and visualizing all of the pellet transect data.
+
+## Pellets detected by plot type
+
+Let's look at the number of pellets detected in burned and reference plots.
+
+```{r show-pellet_transect_plot,out.width = "100%"}
+pellet_count <- dbGetQuery(sg_db, "SELECT * FROM pellet_count;")
+
+pellet_count %>%
+  group_by(type) %>% 
+  count() %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = type)) +
+  geom_bar(aes(y=n, fill = type), stat = "identity") +
+  labs(x = "", y = "# of Detections", fill = "Plot Type")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Number of pellet detections in burned and reference plots") 
+  
+
+```
+
+It looks like we detected more sage-grouse pellets in reference plots when compared to burned plots.
+
+## Pellets Detected by Habitat Type
+
+Let's look at what habitat type pellets were detected within burned and reference plots.
+
+```{r show-pellet_transect_habitat,out.width = "100%"}
+pellet_count <- dbGetQuery(sg_db, "SELECT * FROM pellet_count;")
+
+pellet_count %>%
+  group_by(hab_type,type) %>% 
+  count() %>% 
+  filter(!all(hab_type == "")) %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = type)) +
+  geom_bar(aes(y=n, fill = type), stat = "identity") +
+  facet_wrap(~hab_type)+
+  labs(x = "Plot Type", y = "# of Detections", fill = "Plot Type")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Number of pellet detected by habitat type") 
+  
+
+```
+It looks like most of the pellets were detected in low and black sage-brush. This could be 
+because it's easier to detect pellets within these habitat types, or because sage-grouse use
+these areas more.
+
+## Pellet Age
+Let's look at pellet age in burned and unburned plots
+
+```{r show-pellet_transect_age,out.width = "100%"}
+pellet_count <- dbGetQuery(sg_db, "SELECT * FROM pellet_count;")
+
+pellet_count %>%
+  group_by(pellet_age,type) %>% 
+  count() %>% 
+  filter(!all(pellet_age == "")) %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = type)) +
+  geom_bar(aes(y=n, fill = type), stat = "identity") +
+  facet_wrap(~pellet_age)+
+  labs(x = "Plot Type", y = "# of Detections", fill = "Pellet Age")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Age of Pellets") 
+  
+
+```
+It looks like the age of the pellets stays similar across burned and reference plots, with old and very old pellets 
+being detected the most.
+
+## Pellet Distance
+
+Let's plot out pellet distance from transect line to look at approximately how far pellets are being detected.
+
+```{r show-pellet_transect_dist,out.width = "100%"}
+pellet_count <- dbGetQuery(sg_db, "SELECT * FROM pellet_count;")
+
+pellet_count %>%
+  filter(!all(pellet_dist == "")) %>% 
+  filter(!is.na(pellet_dist)) %>% 
+  mutate(pellet_dist = as.numeric(pellet_dist)) %>% 
+  mutate(pellet_dist = pellet_dist*2.4) %>% 
+  ggplot(aes(x = pellet_dist)) +
+  geom_density() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Distance of Pellet Detected") +
+  labs(x = "Detection Distance (cm)")
+
+```
+
+Looks like most of our pellets are detected at distances less than 3 meters.

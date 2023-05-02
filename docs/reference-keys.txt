@@ -7,3 +7,13 @@ pellet-count-data
 dog-plot-data
 combining-pellet-count-data-with-plot-data
 combining-dog-transect-data-with-plot-data.
+data-wrangling-and-visualization-of-dog-transects
+dog-transect-detections
+detection-distance
+detections-by-fire-year
+detections-of-sage-grouse-by-elevation
+data-wrangling-and-visualization-of-pellet-transects
+pellets-detected-by-plot-type
+pellets-detected-by-habitat-type
+pellet-age
+pellet-distance

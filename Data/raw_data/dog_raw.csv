@@ -1,36 +1,36 @@
 ﻿obs_id,plot_id,obs,n,dist
-1,UTB1,gray_part,1,50
-2,UTC3,hens,1,15
-3,UTC3,chicks,3,15
-4,UTC4,males,9,92
-5,UTC6,hens,1,32.5
-6,UTC6,hens,1,71.5
-7,UTC6,chicks,5,32.5
-8,UTC6,chicks,7,71.5
-9,UTC6,gray_part,30,67.5
-10,UTC6,gray_part,15,4
-11,UTB9,chicks,4,57.9
-12,UTB9,chukar,20,126.9
-13,UTB10,gray_part,9,83.2
-14,UTC17,hens,2,5.2
-15,UTC17,hens,2,4.7
-16,UTC17,hens,7,50.7
-17,UTC17,hens,4,12.3
-18,UTC17,chicks,6,5.2
-19,UTC17,chicks,5,4.7
-20,IDC4,gray_part,8,50
-21,IDB5,hens,4,24.9
-22,IDB5,males,5,24.9
-23,IDB5,males,2,117.8
-24,IDB6,gray_part,6,15.8
-25,IDC7,hens,6,37
-26,IDC7,hens,20,24.8
-27,IDC7,males,2,37
-28,IDC7,males,9,24.8
-29,IDC8,males,2,46.3
-30,IDB9,hens,13,103.8
-31,IDB11,hens,2,16.2
-32,IDB11,chicks,6,16.2
-33,IDB15,hens,1,77.5
-34,IDB15,chicks,5,77.5
-35,IDB15,gray_part,7,16.5
+1,UTB1,Gray Partridge,1,50
+2,UTC3,Adult Female Sage-Grouse,1,15
+3,UTC3,Sage-Grouse Chicks,3,15
+4,UTC4,Adult Male Sage-grouse,9,92
+5,UTC6,Adult Female Sage-Grouse,1,32.5
+6,UTC6,Adult Female Sage-Grouse,1,71.5
+7,UTC6,Sage-Grouse Chicks,5,32.5
+8,UTC6,Sage-Grouse Chicks,7,71.5
+9,UTC6,Gray Partridge,30,67.5
+10,UTC6,Gray Partridge,15,4
+11,UTB9,Sage-Grouse Chicks,4,57.9
+12,UTB9,Chukar,20,126.9
+13,UTB10,Gray Partridge,9,83.2
+14,UTC17,Adult Female Sage-Grouse,2,5.2
+15,UTC17,Adult Female Sage-Grouse,2,4.7
+16,UTC17,Adult Female Sage-Grouse,7,50.7
+17,UTC17,Adult Female Sage-Grouse,4,12.3
+18,UTC17,Sage-Grouse Chicks,6,5.2
+19,UTC17,Sage-Grouse Chicks,5,4.7
+20,IDC4,Gray Partridge,8,50
+21,IDB5,Adult Female Sage-Grouse,4,24.9
+22,IDB5,Adult Male Sage-grouse,5,24.9
+23,IDB5,Adult Male Sage-grouse,2,117.8
+24,IDB6,Gray Partridge,6,15.8
+25,IDC7,Adult Female Sage-Grouse,6,37
+26,IDC7,Adult Female Sage-Grouse,20,24.8
+27,IDC7,Adult Male Sage-grouse,2,37
+28,IDC7,Adult Male Sage-grouse,9,24.8
+29,IDC8,Adult Male Sage-grouse,2,46.3
+30,IDB9,Adult Female Sage-Grouse,13,103.8
+31,IDB11,Adult Female Sage-Grouse,2,16.2
+32,IDB11,Sage-Grouse Chicks,6,16.2
+33,IDB15,Adult Female Sage-Grouse,1,77.5
+34,IDB15,Sage-Grouse Chicks,5,77.5
+35,IDB15,Gray Partridge,7,16.5

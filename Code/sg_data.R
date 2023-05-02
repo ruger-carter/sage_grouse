@@ -14,7 +14,7 @@ dbExecute(sg_db, "CREATE TABLE sg_fire_plots (
           plot_id varchar(5) NOT NULL,
           state varchar(2) CHECK (state IN ('Idaho', 'Utah')),
           date,
-          type char (1) CHECK (type IN ('B','C')),
+          type char (1) CHECK (type IN ('B','R')),
           elevation char (4),
           fire_year char (4),
           surveyor,
@@ -139,8 +139,21 @@ dog_transects <- dbGetQuery(sg_db, "SELECT * FROM dog_transect;")
 dbListTables(sg_db)
 
 dog_transects %>%
+  mutate(obs = factor(obs, levels = c("Sage-Grouse Chicks",
+                                      "Adult Female Sage-Grouse",
+                                      "Adult Male Sage-grouse",
+                                      "Gray Partridge",
+                                      "Chukar"))) %>% 
   group_by(obs, type) %>% 
-  summarize(nsum = sum(n))
+  mutate(n = as.numeric(n)) %>% 
+  summarize(nsum = sum(n)) %>% 
+  ggplot(aes(x = type)) +
+  geom_bar(aes(y=nsum, fill = type), stat = "identity") +
+  facet_wrap(~obs, nrow = 1) +
+  labs(x = "", y = "# of Detections", fill = "Plot Type")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Number of detections in burned and reference plots")
 
 
 dbRemoveTable(sg_db, "sg_fire_plots")
@@ -148,4 +161,20 @@ dbRemoveTable(sg_db, "dog_transect_raw")
 dbRemoveTable(sg_db, "pellet_count_raw")
 dbRemoveTable(sg_db, "pellet_count")
 dbRemoveTable(sg_db, "dog_transect")
+dbRemoveTable(sg_db, "pellet_survey")
 dbListTables(sg_db)
+
+
+
+pellet_count %>%
+  group_by(type) %>% 
+  count() %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = type)) +
+  geom_bar(aes(y=n, fill = type), stat = "identity") +
+  labs(x = "", y = "# of Detections", fill = "Plot Type")+
+  theme(legend.position = "bottom") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Number of pellet detections in burned and reference plots") 
+
+
